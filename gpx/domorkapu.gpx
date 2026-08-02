@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Kirandulas PWA" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata><name>Dömörkapu / Bükkös-patak</name></metadata>
+  <wpt lat="47.6929615" lon="19.0053947"><name>Dömörkapu</name></wpt>
+  <wpt lat="47.6929615" lon="19.0053947"><name>Bükkös-patak / Dömörkapu</name></wpt>
+  <rte><name>Dömörkapu / Bükkös-patak mini pontok</name>
+    <rtept lat="47.6929615" lon="19.0053947"><name>Dömörkapu</name></rtept>
+    <rtept lat="47.6929615" lon="19.0053947"><name>Bükkös-patak / Dömörkapu</name></rtept>
+  </rte>
+</gpx>
