@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Kirandulas PWA" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata><name>Cuha-völgy / Vinye</name></metadata>
+  <wpt lat="47.3597696" lon="17.8198522"><name>Vinye vasútállomás</name></wpt>
+  <wpt lat="47.3597696" lon="17.8198522"><name>Cuha-völgy</name></wpt>
+  <rte><name>Cuha-völgy / Vinye mini pontok</name>
+    <rtept lat="47.3597696" lon="17.8198522"><name>Vinye vasútállomás</name></rtept>
+    <rtept lat="47.3597696" lon="17.8198522"><name>Cuha-völgy</name></rtept>
+  </rte>
+</gpx>
