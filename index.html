@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patakos gyerekhelyek</title>
+  <style>
+    :root{
+      --bg:#0d1117; --panel:#151b23; --panel2:#0f1722; --text:#e6edf3; --muted:#91a4b7;
+      --blue:#58a6ff; --green:#3fb950; --yellow:#d29922; --red:#f85149; --line:#30363d;
+      --chip:#212a36;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#0b1220,#0d1117 32%);color:var(--text)}
+    header{position:sticky;top:0;z-index:2;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:16px}
+    h1{margin:0 0 6px;font-size:24px;letter-spacing:-.03em}.sub{color:var(--muted);font-size:14px;line-height:1.35}
+    .controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.controls input,.controls select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);padding:12px;font-size:15px}
+    main{padding:14px;max-width:900px;margin:auto}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}.stat{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:10px}.stat b{display:block;font-size:20px}.stat span{font-size:12px;color:var(--muted)}
+    .card{background:rgba(21,27,35,.96);border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+    .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.name{font-size:18px;font-weight:800;letter-spacing:-.02em}.area{color:var(--muted);font-size:13px;margin-top:2px}.badges{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.badge{font-size:12px;padding:5px 8px;border-radius:999px;background:var(--chip);border:1px solid var(--line);white-space:nowrap}.ok{color:var(--green)}.mid{color:var(--yellow)}.no{color:var(--red)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.field{background:#0c131d;border:1px solid #253040;border-radius:12px;padding:9px}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.value{margin-top:3px;font-size:14px}.note{color:#c9d1d9;line-height:1.4;margin:10px 0 12px}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions a{color:#08111f;background:var(--blue);text-decoration:none;border-radius:12px;padding:9px 11px;font-weight:700;font-size:14px}.actions a.secondary{background:#263445;color:var(--text);border:1px solid var(--line)}
+    .stars{letter-spacing:.08em}.footer{color:var(--muted);font-size:12px;padding:20px 2px 40px;line-height:1.45}@media(max-width:560px){.controls,.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}.top{display:block}.badges{justify-content:flex-start;margin-top:9px}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>Patakos gyerekhelyek</h1>
+  <div class="sub">Budapest/Németvölgy kiindulással: köves, árnyékos, patakos, gátépítős mini-kalandok 1,5 és 3,5 éves gyerekekhez.</div>
+  <div class="controls">
+    <input id="q" placeholder="Keresés: Dömörkapu, kisvasút, Orsi..." />
+    <select id="filter">
+      <option value="all">Minden hely</option>
+      <option value="orsi">Orsi-egyedül is reális</option>
+      <option value="water-high">Vízbiztosabb</option>
+      <option value="near">Közeli / max ~45 perc</option>
+      <option value="with-dobi">Csak Döbivel / kalandosabb</option>
+    </select>
+  </div>
+</header>
+<main>
+  <div class="stats">
+    <div class="stat"><b id="count">0</b><span>hely</span></div>
+    <div class="stat"><b id="bestWater">0</b><span>vízbiztosabb</span></div>
+    <div class="stat"><b id="orsiCount">0</b><span>Orsi-opció</span></div>
+  </div>
+  <section id="list"></section>
+  <div class="footer">Megjegyzés: természetes patakoknál nyári szárazságban mindig lehet csalódás. Ez nem biztonsági garancia; helyszíni tábla/lezárás, időjárás, cipő, hordozó fontos.</div>
+</main>
+<script>
+const places = [
+  {name:'Jegenye-völgy / Paprikás-patak', area:'Solymár', drive:'20–25 perc', transit:'jó-közepes', orsi:true, water:'alacsony-közepes', dam:4, toddler:'hordozó vagy kézenfogás', tag:'közeli', note:'Rövid, visszafordulós, vízeséses mini séta. Szárazságban lehet kevés víz, de logisztikailag az egyik legkönnyebb.', map:'https://maps.google.com/?q=Jegenye-völgyi+vízesés+Solymár'},
+  {name:'Dömörkapu / Bükkös-patak', area:'Szentendre', drive:'~40 perc', transit:'közepes: HÉV + busz', orsi:false, water:'közepes', dam:5, toddler:'hordozó/kézenfogás', tag:'patakos', note:'Nagyon jó köves-patakos, gátépítős hely. Nem kell nagy túra, elég a patakparton bóklászni.', map:'https://maps.google.com/?q=Dömörkapu+Szentendre'},
+  {name:'Dera-szurdok', area:'Pilisszentkereszt', drive:'40–45 perc', transit:'közepes: HÉV Pomáz + busz', orsi:false, water:'közepes', dam:4, toddler:'inkább hordozó', tag:'kalandos', note:'Szurdokos, hidacskás, patakátkelős. 3,5 évesnek szuper; 1,5 éves mellett figyelős.', map:'https://maps.google.com/?q=Dera-szurdok+Pilisszentkereszt'},
+  {name:'Holdvilág-árok', area:'Pomáz / Kiskovácsi', drive:'~40 perc', transit:'közepes', orsi:false, water:'közepes', dam:3, toddler:'csak hordozó', tag:'with-dobi', note:'Nagyon izgi, de technikásabb, csúszósabb/létrás részekkel. Két kicsivel inkább csak Döbivel.', map:'https://maps.google.com/?q=Holdvilág-árok+Pomáz'},
+  {name:'Királyrét / Julianna-barlang / Szén-patak', area:'Szokolya', drive:'70–75 perc', transit:'jó élmény: vonat + kisvasút', orsi:true, water:'közepes', dam:5, toddler:'hordozó/kézenfogás', tag:'kisvasút', note:'A linkelt barlangos-patakos vibe. Kisvasúttal egész napos gyerekprogramnak nagyon erős.', map:'https://maps.google.com/?q=Julianna-barlang+Szokolya'},
+  {name:'Apátkúti-völgy / Telgárthy-rét', area:'Visegrád', drive:'~60 perc', transit:'macerás', orsi:false, water:'közepes', dam:4, toddler:'hordozó/kézenfogás', tag:'piknik', note:'Patak + rét + erdő, piknikezős családi nap. Röviden is működik, ha nem akartok nagy túrát.', map:'https://maps.google.com/?q=Telgárthy-rét+Visegrád'},
+  {name:'Kismaros / Morgó-patak', area:'Kismaros', drive:'70–85 perc', transit:'jó: vonat Kismarosig', orsi:true, water:'közepes', dam:4, toddler:'helyfüggő', tag:'vonat', note:'Vonatos-kisvasutas-patakos program. Pontos partszakaszt érdemes előre kiválasztani.', map:'https://maps.google.com/?q=Kismaros+Morgó-patak'},
+  {name:'Kemence / Csarna-patak / kisvasút', area:'Börzsöny', drive:'~95 perc', transit:'macerás', orsi:false, water:'közepes', dam:5, toddler:'hordozó/kézenfogás', tag:'kisvasút', note:'Egész napos Börzsöny-program: patak, kisvasút, erdei hangulat. Messzebb van, de nagyon gyerekbarát élmény.', map:'https://maps.google.com/?q=Kemence+kisvasút'},
+  {name:'Tata / Fényes tanösvény', area:'Tata', drive:'~55 perc', transit:'közepes', orsi:true, water:'magas', dam:2, toddler:'jó, de pallón figyelős', tag:'water-high', note:'Nem gátépítős patak, inkább biztos vizes-lápos-pallós tanösvény. Szárazságban is jobb esély vízélményre.', map:'https://maps.google.com/?q=Fényes+tanösvény+Tata'},
+  {name:'Cuha-völgy / Vinye', area:'Bakony', drive:'~1ó50p', transit:'vonatosan tematikus', orsi:false, water:'közepes', dam:5, toddler:'hordozó/kézenfogás', tag:'egész nap', note:'Patak, vasút, hidak, alagutak. Nagyon erős, de már nagy családi nap, nem spontán délután.', map:'https://maps.google.com/?q=Vinye+vasútállomás'},
+  {name:'Gaja-szurdok', area:'Bodajk', drive:'70–80 perc', transit:'macerás', orsi:false, water:'közepes', dam:4, toddler:'hordozó/kézenfogás', tag:'szurdok', note:'Szép szurdokos-patakos hely hidakkal. Szárazságban víz mennyisége kérdéses.', map:'https://maps.google.com/?q=Gaja-szurdok+Bodajk'},
+  {name:'Rám-szakadék alsóbb részek / Dömös', area:'Dömös', drive:'~55 perc', transit:'közepes', orsi:false, water:'közepes', dam:3, toddler:'nem ideális', tag:'with-dobi', note:'Klasszikus vizes-szurdokos hely, de a teljes Rám-szakadék két ilyen kicsivel még nem ideális. Csak óvatos, alsóbb részek.', map:'https://maps.google.com/?q=Dömös+Rám-szakadék'},
+  {name:'Remete-szurdok', area:'Máriaremete', drive:'~20 perc', transit:'jó', orsi:true, water:'alacsony', dam:1, toddler:'kézenfogós/hordozó', tag:'közeli', note:'Nem igazi patakos, de közeli árnyékos-köves mini-kaland. Jó mentőprogram, ha a víz nem feltétel.', map:'https://maps.google.com/?q=Remete-szurdok+Budapest'}
+];
+const q=document.querySelector('#q'), filter=document.querySelector('#filter'), list=document.querySelector('#list');
+function waterClass(w){return w.includes('magas')?'ok':w.includes('közepes')?'mid':'no'}
+function transitClass(t){return t.includes('jó')?'ok':t.includes('közepes')?'mid':'no'}
+function render(){
+  const query=q.value.toLowerCase(); const f=filter.value;
+  let rows=places.filter(p => !query || JSON.stringify(p).toLowerCase().includes(query));
+  rows=rows.filter(p => f==='all' || (f==='orsi'&&p.orsi) || (f==='water-high'&&p.water.includes('magas')) || (f==='near'&&(p.drive.includes('20')||p.drive.includes('40')||p.drive.includes('45'))) || (f==='with-dobi'&&p.tag==='with-dobi'));
+  document.querySelector('#count').textContent=rows.length;
+  document.querySelector('#bestWater').textContent=places.filter(p=>p.water.includes('magas')).length;
+  document.querySelector('#orsiCount').textContent=places.filter(p=>p.orsi).length;
+  list.innerHTML=rows.map(p=>`<article class="card"><div class="top"><div><div class="name">${p.name}</div><div class="area">${p.area}</div></div><div class="badges"><span class="badge">🚗 ${p.drive}</span><span class="badge ${p.orsi?'ok':'mid'}">Orsi: ${p.orsi?'reális':'inkább nem'}</span></div></div><div class="grid"><div class="field"><div class="label">Víz szárazságban</div><div class="value ${waterClass(p.water)}">${p.water}</div></div><div class="field"><div class="label">Gátépítős faktor</div><div class="value stars">${'★'.repeat(p.dam)}${'☆'.repeat(5-p.dam)}</div></div><div class="field"><div class="label">Tömegközlekedés</div><div class="value ${transitClass(p.transit)}">${p.transit}</div></div><div class="field"><div class="label">1,5 éves</div><div class="value">${p.toddler}</div></div></div><div class="note">${p.note}</div><div class="actions"><a href="${p.map}" target="_blank" rel="noopener">Google Maps</a><a class="secondary" href="https://www.google.com/search?q=${encodeURIComponent(p.name+' gyerekkel patak')}" target="_blank" rel="noopener">friss infó keresés</a></div></article>`).join('') || '<div class="footer">Nincs találat.</div>';
+}
+q.addEventListener('input',render); filter.addEventListener('change',render); render();
+</script>
+</body>
+</html>
