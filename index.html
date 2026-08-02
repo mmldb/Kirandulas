@@ -3,104 +3,35 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
   <title>Patakos gyerekhelyek</title>
   <style>
-    :root{
-      --bg:#0d1117; --panel:#151b23; --panel2:#0f1722; --text:#e6edf3; --muted:#91a4b7;
-      --blue:#58a6ff; --green:#3fb950; --yellow:#d29922; --red:#f85149; --line:#30363d;
-      --chip:#212a36;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#0b1220,#0d1117 32%);color:var(--text)}
-    header{position:sticky;top:0;z-index:2;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:16px}
-    h1{margin:0 0 6px;font-size:24px;letter-spacing:-.03em}.sub{color:var(--muted);font-size:14px;line-height:1.35}
-    .controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.controls input,.controls select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);padding:12px;font-size:15px}
-    main{padding:14px;max-width:900px;margin:auto}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}.stat{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:10px}.stat b{display:block;font-size:20px}.stat span{font-size:12px;color:var(--muted)}
-    .card{background:rgba(21,27,35,.96);border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0;box-shadow:0 10px 30px rgba(0,0,0,.2)}
-    .card.done{border-color:rgba(63,185,80,.65);background:rgba(21,35,27,.96)}
-    .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.name{font-size:18px;font-weight:800;letter-spacing:-.02em}.area{color:var(--muted);font-size:13px;margin-top:2px}.badges{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.badge{font-size:12px;padding:5px 8px;border-radius:999px;background:var(--chip);border:1px solid var(--line);white-space:nowrap}.ok{color:var(--green)}.mid{color:var(--yellow)}.no{color:var(--red)}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.field{background:#0c131d;border:1px solid #253040;border-radius:12px;padding:9px}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.value{margin-top:3px;font-size:14px}.note{color:#c9d1d9;line-height:1.4;margin:10px 0 12px}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions a{color:#08111f;background:var(--blue);text-decoration:none;border-radius:12px;padding:9px 11px;font-weight:700;font-size:14px}.actions a.secondary{background:#263445;color:var(--text);border:1px solid var(--line)}
-    .stars{letter-spacing:.08em}.footer{color:var(--muted);font-size:12px;padding:20px 2px 40px;line-height:1.45}
-    .visitBox{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:#0c131d;border:1px solid #253040;border-radius:14px;padding:10px;margin:12px 0}.visitBox label{display:flex;align-items:center;gap:9px;font-weight:700}.visitBox input{width:20px;height:20px}.rating{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:13px}.rating select{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:7px}
-    @media(max-width:560px){.controls,.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}.top{display:block}.badges{justify-content:flex-start;margin-top:9px}.visitBox{grid-template-columns:1fr}.rating{justify-content:space-between}}
+    :root{--bg:#0d1117;--panel:#151b23;--panel2:#0f1722;--text:#e6edf3;--muted:#91a4b7;--blue:#58a6ff;--green:#3fb950;--yellow:#d29922;--red:#f85149;--line:#30363d;--chip:#212a36}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#0b1220,#0d1117 32%);color:var(--text)}header{position:sticky;top:0;z-index:2;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:16px}h1{margin:0 0 6px;font-size:24px;letter-spacing:-.03em}.sub{color:var(--muted);font-size:14px;line-height:1.35}.controls{display:grid;grid-template-columns:1fr 150px;gap:8px;margin-top:14px}.controls input,.controls select{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);padding:12px;font-size:15px}main{padding:14px;max-width:900px;margin:auto}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}.stat{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:10px}.stat b{display:block;font-size:20px}.stat span{font-size:12px;color:var(--muted)}.banner{display:none;background:#1f3a20;border:1px solid #3fb950;border-radius:14px;padding:10px;margin:0 0 12px}.banner button{float:right;border:0;border-radius:10px;background:var(--green);padding:7px 10px;font-weight:800}.card{overflow:hidden;background:rgba(21,27,35,.96);border:1px solid var(--line);border-radius:18px;margin:10px 0;box-shadow:0 10px 30px rgba(0,0,0,.2)}.card.done{border-color:rgba(63,185,80,.65);background:rgba(21,35,27,.96)}.photo{height:155px;background:radial-gradient(circle at 30% 20%,#1f6feb,#0f1722 55%);position:relative}.photo img{width:100%;height:100%;object-fit:cover;display:block}.photo.noimg:after{content:'🌲 💧 🪨';position:absolute;inset:0;display:grid;place-items:center;font-size:48px;opacity:.85}.inside{padding:14px}.top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.name{font-size:18px;font-weight:800;letter-spacing:-.02em}.area{color:var(--muted);font-size:13px;margin-top:2px}.badges{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.badge{font-size:12px;padding:5px 8px;border-radius:999px;background:var(--chip);border:1px solid var(--line);white-space:nowrap}.ok{color:var(--green)}.mid{color:var(--yellow)}.no{color:var(--red)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.field{background:#0c131d;border:1px solid #253040;border-radius:12px;padding:9px}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.value{margin-top:3px;font-size:14px}.note{color:#c9d1d9;line-height:1.4;margin:10px 0 12px}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions a,.actions button{color:#08111f;background:var(--blue);text-decoration:none;border:0;border-radius:12px;padding:9px 11px;font-weight:800;font-size:14px}.actions a.secondary,.actions button.secondary{background:#263445;color:var(--text);border:1px solid var(--line)}.stars{letter-spacing:.08em}.footer{color:var(--muted);font-size:12px;padding:20px 2px 40px;line-height:1.45}.visitBox{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:#0c131d;border:1px solid #253040;border-radius:14px;padding:10px;margin:12px 0}.visitBox label{display:flex;align-items:center;gap:9px;font-weight:700}.visitBox input{width:20px;height:20px}.rating{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:13px}.rating select{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:7px}.coords{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#c9d1d9;font-size:12px;word-break:break-all}@media(max-width:560px){.controls,.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}.top{display:block}.badges{justify-content:flex-start;margin-top:9px}.visitBox{grid-template-columns:1fr}.rating{justify-content:space-between}.photo{height:135px}}
   </style>
 </head>
 <body>
 <header>
   <h1>Patakos gyerekhelyek</h1>
-  <div class="sub">Budapest/Németvölgy kiindulással: köves, árnyékos, patakos, gátépítős mini-kalandok 1,5 és 3,5 éves gyerekekhez.</div>
-  <div class="controls">
-    <input id="q" placeholder="Keresés: Dömörkapu, kisvasút, Paprikás..." />
-    <select id="filter">
-      <option value="all">Minden hely</option>
-      <option value="done">Már megvolt</option>
-      <option value="notdone">Még nincs kész</option>
-      <option value="water-high">Vízbiztosabb</option>
-      <option value="near">Közeli / max ~45 perc</option>
-      <option value="with-dobi">Csak Döbivel / kalandosabb</option>
-    </select>
-  </div>
+  <div class="sub">Köves, árnyékos, patakos, gátépítős mini-kalandok. Pipa és pontszám lokálisan mentődik ezen a telefonon.</div>
+  <div class="controls"><input id="q" placeholder="Keresés: Dömörkapu, kisvasút, Paprikás..." /><select id="dist"><option value="all">Minden táv</option><option value="near">Közeli</option><option value="mid">Közepes</option><option value="far">Messzi</option></select></div>
 </header>
 <main>
-  <div class="stats">
-    <div class="stat"><b id="count">0</b><span>látható hely</span></div>
-    <div class="stat"><b id="doneCount">0</b><span>megvolt</span></div>
-    <div class="stat"><b id="avgRating">–</b><span>átlagpont</span></div>
-  </div>
+  <div id="updateBanner" class="banner"><button id="reloadBtn">Frissítés</button>Új verzió elérhető.</div>
+  <div class="stats"><div class="stat"><b id="count">0</b><span>látható</span></div><div class="stat"><b id="doneCount">0</b><span>megvolt</span></div><div class="stat"><b id="avgRating">–</b><span>átlagpont</span></div></div>
   <section id="list"></section>
-  <div class="footer">Megjegyzés: természetes patakoknál nyári szárazságban mindig lehet csalódás. Ez nem biztonsági garancia; helyszíni tábla/lezárás, időjárás, cipő, hordozó fontos. A pipák és pontszámok ezen az eszközön, böngészőben mentődnek.</div>
+  <div class="footer">A GPX-ek egyszerű start/cél pontokat tartalmaznak, nem garantáltan teljes bejárható útvonalak. Természetes patakoknál nyári szárazságban lehet csalódás; a helyszíni lezárás/tábla mindig felülírja ezt az appot. Verzió: <span id="ver"></span></div>
 </main>
+<script src="places.js"></script>
 <script>
-const places = [
-  {id:'jegenye', name:'Jegenye-völgy / Paprikás-patak', area:'Solymár', drive:'20–25 perc', water:'alacsony-közepes', dam:4, toddler:'hordozó vagy kézenfogás', tag:'közeli', initialDone:true, note:'Rövid, visszafordulós, vízeséses mini séta. Szárazságban lehet kevés víz, de logisztikailag az egyik legkönnyebb.', map:'https://maps.google.com/?q=Jegenye-völgyi+vízesés+Solymár', photos:['https://www.google.com/search?tbm=isch&q=Jegenye-völgyi+vízesés+Solymár+Paprikás-patak','https://commons.wikimedia.org/wiki/Category:Jegenye-völgyi_vízesés']},
-  {id:'domorkapu', name:'Dömörkapu / Bükkös-patak', area:'Szentendre', drive:'~40 perc', water:'közepes', dam:5, toddler:'hordozó/kézenfogás', tag:'patakos', note:'Nagyon jó köves-patakos, gátépítős hely. Nem kell nagy túra, elég a patakparton bóklászni.', map:'https://maps.google.com/?q=Dömörkapu+Szentendre', photos:['https://www.google.com/search?tbm=isch&q=Dömörkapu+Szentendre+Bükkös-patak','https://commons.wikimedia.org/wiki/Category:Dömörkapu_(Szentendre)']},
-  {id:'dera', name:'Dera-szurdok', area:'Pilisszentkereszt', drive:'40–45 perc', water:'közepes', dam:4, toddler:'inkább hordozó', tag:'kalandos', note:'Szurdokos, hidacskás, patakátkelős. 3,5 évesnek szuper; 1,5 éves mellett figyelős.', map:'https://maps.google.com/?q=Dera-szurdok+Pilisszentkereszt', photos:['https://www.google.com/search?tbm=isch&q=Dera-szurdok+Pilisszentkereszt','https://commons.wikimedia.org/wiki/Category:Dera-szurdok']},
-  {id:'holdvilag', name:'Holdvilág-árok', area:'Pomáz / Kiskovácsi', drive:'~40 perc', water:'közepes', dam:3, toddler:'csak hordozó', tag:'with-dobi', note:'Nagyon izgi, de technikásabb, csúszósabb/létrás részekkel. Két kicsivel inkább csak Döbivel.', map:'https://maps.google.com/?q=Holdvilág-árok+Pomáz', photos:['https://www.google.com/search?tbm=isch&q=Holdvilág-árok+Pomáz','https://commons.wikimedia.org/wiki/Category:Holdvilág-árok']},
-  {id:'kiralyret', name:'Királyrét / Julianna-barlang / Szén-patak', area:'Szokolya', drive:'70–75 perc', water:'közepes', dam:5, toddler:'hordozó/kézenfogás', tag:'kisvasút', note:'A linkelt barlangos-patakos vibe. Kisvasúttal egész napos gyerekprogramnak nagyon erős.', map:'https://maps.google.com/?q=Julianna-barlang+Szokolya', photos:['https://www.google.com/search?tbm=isch&q=Julianna-barlang+Szokolya+Szén-patak','https://www.google.com/search?tbm=isch&q=Királyrét+Szén-patak']},
-  {id:'apatkuti', name:'Apátkúti-völgy / Telgárthy-rét', area:'Visegrád', drive:'~60 perc', water:'közepes', dam:4, toddler:'hordozó/kézenfogás', tag:'piknik', note:'Patak + rét + erdő, piknikezős családi nap. Röviden is működik, ha nem akartok nagy túrát.', map:'https://maps.google.com/?q=Telgárthy-rét+Visegrád', photos:['https://www.google.com/search?tbm=isch&q=Apátkúti-völgy+Telgárthy-rét+Visegrád','https://commons.wikimedia.org/wiki/Category:Apátkúti-völgy']},
-  {id:'kismaros', name:'Kismaros / Morgó-patak', area:'Kismaros', drive:'70–85 perc', water:'közepes', dam:4, toddler:'helyfüggő', tag:'vonat', note:'Vonatos-kisvasutas-patakos program. Pontos partszakaszt érdemes előre kiválasztani.', map:'https://maps.google.com/?q=Kismaros+Morgó-patak', photos:['https://www.google.com/search?tbm=isch&q=Kismaros+Morgó-patak','https://www.google.com/search?tbm=isch&q=Királyréti+kisvasút+Morgó-patak']},
-  {id:'kemence', name:'Kemence / Csarna-patak / kisvasút', area:'Börzsöny', drive:'~95 perc', water:'közepes', dam:5, toddler:'hordozó/kézenfogás', tag:'kisvasút', note:'Egész napos Börzsöny-program: patak, kisvasút, erdei hangulat. Messzebb van, de nagyon gyerekbarát élmény.', map:'https://maps.google.com/?q=Kemence+kisvasút', photos:['https://www.google.com/search?tbm=isch&q=Kemence+Csarna-patak+kisvasút','https://commons.wikimedia.org/wiki/Category:Kemence_Forest_Museum_Railway']},
-  {id:'tata', name:'Tata / Fényes tanösvény', area:'Tata', drive:'~55 perc', water:'magas', dam:2, toddler:'jó, de pallón figyelős', tag:'water-high', note:'Nem gátépítős patak, inkább biztos vizes-lápos-pallós tanösvény. Szárazságban is jobb esély vízélményre.', map:'https://maps.google.com/?q=Fényes+tanösvény+Tata', photos:['https://www.google.com/search?tbm=isch&q=Fényes+tanösvény+Tata','https://commons.wikimedia.org/wiki/Category:Fényes_Tanösvény']},
-  {id:'cuha', name:'Cuha-völgy / Vinye', area:'Bakony', drive:'~1ó50p', water:'közepes', dam:5, toddler:'hordozó/kézenfogás', tag:'egész nap', note:'Patak, vasút, hidak, alagutak. Nagyon erős, de már nagy családi nap, nem spontán délután.', map:'https://maps.google.com/?q=Vinye+vasútállomás', photos:['https://www.google.com/search?tbm=isch&q=Cuha-völgy+Vinye','https://commons.wikimedia.org/wiki/Category:Cuha-völgy']},
-  {id:'gaja', name:'Gaja-szurdok', area:'Bodajk', drive:'70–80 perc', water:'közepes', dam:4, toddler:'hordozó/kézenfogás', tag:'szurdok', note:'Szép szurdokos-patakos hely hidakkal. Szárazságban víz mennyisége kérdéses.', map:'https://maps.google.com/?q=Gaja-szurdok+Bodajk', photos:['https://www.google.com/search?tbm=isch&q=Gaja-szurdok+Bodajk','https://commons.wikimedia.org/wiki/Category:Gaja-szurdok']},
-  {id:'ram', name:'Rám-szakadék alsóbb részek / Dömös', area:'Dömös', drive:'~55 perc', water:'közepes', dam:3, toddler:'nem ideális', tag:'with-dobi', note:'Klasszikus vizes-szurdokos hely, de a teljes Rám-szakadék két ilyen kicsivel még nem ideális. Csak óvatos, alsóbb részek.', map:'https://maps.google.com/?q=Dömös+Rám-szakadék', photos:['https://www.google.com/search?tbm=isch&q=Rám-szakadék+Dömös','https://commons.wikimedia.org/wiki/Category:Rám-szakadék']},
-  {id:'remete', name:'Remete-szurdok', area:'Máriaremete', drive:'~20 perc', water:'alacsony', dam:1, toddler:'kézenfogós/hordozó', tag:'közeli', note:'Nem igazi patakos, de közeli árnyékos-köves mini-kaland. Jó mentőprogram, ha a víz nem feltétel.', map:'https://maps.google.com/?q=Remete-szurdok+Budapest', photos:['https://www.google.com/search?tbm=isch&q=Remete-szurdok+Budapest','https://commons.wikimedia.org/wiki/Category:Remete-szurdok']}
-];
-const q=document.querySelector('#q'), filter=document.querySelector('#filter'), list=document.querySelector('#list');
-const KEY='patakosGyerekhelyek.v2';
-function loadState(){
-  try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}
-}
-function saveState(s){localStorage.setItem(KEY, JSON.stringify(s))}
-let state=loadState();
-for(const p of places){ if(p.initialDone && !state[p.id]) state[p.id]={done:true,rating:''}; }
-saveState(state);
-function waterClass(w){return w.includes('magas')?'ok':w.includes('közepes')?'mid':'no'}
-function ratingOptions(val){
-  let opts='<option value="">–</option>';
-  for(let i=0;i<=10;i++) opts+=`<option value="${i}" ${String(val)===String(i)?'selected':''}>${i}</option>`;
-  return opts;
-}
-function render(){
-  const query=q.value.toLowerCase(); const f=filter.value;
-  let rows=places.filter(p => !query || JSON.stringify(p).toLowerCase().includes(query));
-  rows=rows.filter(p => {
-    const st=state[p.id]||{};
-    return f==='all' || (f==='done'&&st.done) || (f==='notdone'&&!st.done) || (f==='water-high'&&p.water.includes('magas')) || (f==='near'&&(p.drive.includes('20')||p.drive.includes('40')||p.drive.includes('45'))) || (f==='with-dobi'&&p.tag==='with-dobi');
-  });
-  const doneAll=places.filter(p=>(state[p.id]||{}).done);
-  const ratings=places.map(p=>Number((state[p.id]||{}).rating)).filter(n=>Number.isFinite(n));
-  document.querySelector('#count').textContent=rows.length;
-  document.querySelector('#doneCount').textContent=doneAll.length;
-  document.querySelector('#avgRating').textContent=ratings.length ? (ratings.reduce((a,b)=>a+b,0)/ratings.length).toFixed(1) : '–';
-  list.innerHTML=rows.map(p=>{
-    const st=state[p.id]||{};
-    return `<article class="card ${st.done?'done':''}"><div class="top"><div><div class="name">${p.name}</div><div class="area">${p.area}</div></div><div class="badges"><span class="badge">🚗 ${p.drive}</span><span class="badge ${st.done?'ok':'mid'}">${st.done?'✓ megvolt':'még nincs'}</span></div></div><div class="visitBox"><label><input type="checkbox" data-done="${p.id}" ${st.done?'checked':''}> Már kész / megvolt</label><div class="rating"><span>Pont:</span><select data-rating="${p.id}">${ratingOptions(st.rating)}</select><span>/10</span></div></div><div class="grid"><div class="field"><div class="label">Víz szárazságban</div><div class="value ${waterClass(p.water)}">${p.water}</div></div><div class="field"><div class="label">Gátépítős faktor</div><div class="value stars">${'★'.repeat(p.dam)}${'☆'.repeat(5-p.dam)}</div></div><div class="field"><div class="label">1,5 éves</div><div class="value">${p.toddler}</div></div><div class="field"><div class="label">Típus</div><div class="value">${p.tag}</div></div></div><div class="note">${p.note}</div><div class="actions"><a href="${p.map}" target="_blank" rel="noopener">Google Maps</a>${p.photos.map((url,i)=>`<a class="secondary" href="${url}" target="_blank" rel="noopener">Képek ${i+1}</a>`).join('')}<a class="secondary" href="https://www.google.com/search?q=${encodeURIComponent(p.name+' gyerekkel patak friss infó')}" target="_blank" rel="noopener">friss infó</a></div></article>`
-  }).join('') || '<div class="footer">Nincs találat.</div>';
-  document.querySelectorAll('[data-done]').forEach(el=>el.addEventListener('change',e=>{const id=e.target.dataset.done; state[id]={...(state[id]||{}), done:e.target.checked}; saveState(state); render();}));
-  document.querySelectorAll('[data-rating]').forEach(el=>el.addEventListener('change',e=>{const id=e.target.dataset.rating; state[id]={...(state[id]||{}), rating:e.target.value}; saveState(state); render();}));
-}
-q.addEventListener('input',render); filter.addEventListener('change',render); render();
+const q=document.querySelector('#q'), dist=document.querySelector('#dist'), list=document.querySelector('#list');
+const KEY='patakosGyerekhelyek.v3'; document.querySelector('#ver').textContent=window.APP_VERSION||'';
+function loadState(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}} function saveState(s){localStorage.setItem(KEY,JSON.stringify(s))} let state=loadState(); for(const p of PLACES){if(p.initialDone&&!state[p.id])state[p.id]={done:true,rating:''}} saveState(state);
+function waterClass(w){return w.includes('magas')?'ok':w.includes('közepes')?'mid':'no'} function ratingOptions(val){let opts='<option value="">–</option>';for(let i=0;i<=10;i++)opts+=`<option value="${i}" ${String(val)===String(i)?'selected':''}>${i}</option>`;return opts} function esc(s){return (s??'').toString().replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function render(){const query=q.value.toLowerCase(), d=dist.value;let rows=PLACES.filter(p=>(!query||JSON.stringify(p).toLowerCase().includes(query))&&(d==='all'||p.distance===d));const doneAll=PLACES.filter(p=>(state[p.id]||{}).done);const ratings=PLACES.map(p=>Number((state[p.id]||{}).rating)).filter(n=>Number.isFinite(n));document.querySelector('#count').textContent=rows.length;document.querySelector('#doneCount').textContent=doneAll.length;document.querySelector('#avgRating').textContent=ratings.length?(ratings.reduce((a,b)=>a+b,0)/ratings.length).toFixed(1):'–';list.innerHTML=rows.map(p=>{const st=state[p.id]||{}, lat=p.target[0].toFixed(6), lon=p.target[1].toFixed(6);return `<article class="card ${st.done?'done':''}"><div class="photo ${p.image?'':'noimg'}">${p.image?`<img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.remove()">`:''}</div><div class="inside"><div class="top"><div><div class="name">${esc(p.name)}</div><div class="area">${esc(p.area)}${p.credit?` · kép: ${esc(p.credit)}`:''}</div></div><div class="badges"><span class="badge">🚗 ${esc(p.drive)}</span><span class="badge ${st.done?'ok':'mid'}">${st.done?'✓ megvolt':'még nincs'}</span></div></div><div class="visitBox"><label><input type="checkbox" data-done="${p.id}" ${st.done?'checked':''}> Már kész / megvolt</label><div class="rating"><span>Pont:</span><select data-rating="${p.id}">${ratingOptions(st.rating)}</select><span>/10</span></div></div><div class="grid"><div class="field"><div class="label">Víz szárazságban</div><div class="value ${waterClass(p.water)}">${esc(p.water)}</div></div><div class="field"><div class="label">Gátépítős faktor</div><div class="value stars">${'★'.repeat(p.dam)}${'☆'.repeat(5-p.dam)}</div></div><div class="field"><div class="label">1,5 éves</div><div class="value">${esc(p.toddler)}</div></div><div class="field"><div class="label">Koordináta</div><div class="value coords">${lat}, ${lon}</div></div></div><div class="note">${esc(p.note)}</div><div class="actions"><a href="${p.mapUrl}" target="_blank" rel="noopener">Térkép</a><a class="secondary" href="${p.startUrl}" target="_blank" rel="noopener">Start</a><a class="secondary" href="${p.gpxUrl}" download>GPX</a><a class="secondary" href="${p.imageSearchUrl}" target="_blank" rel="noopener">Képek</a></div></div></article>`}).join('')||'<div class="footer">Nincs találat.</div>';document.querySelectorAll('[data-done]').forEach(el=>el.addEventListener('change',e=>{const id=e.target.dataset.done;state[id]={...(state[id]||{}),done:e.target.checked};saveState(state);render()}));document.querySelectorAll('[data-rating]').forEach(el=>el.addEventListener('change',e=>{const id=e.target.dataset.rating;state[id]={...(state[id]||{}),rating:e.target.value};saveState(state);render()}))}
+q.addEventListener('input',render);dist.addEventListener('change',render);render();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').then(reg=>{reg.addEventListener('updatefound',()=>{const nw=reg.installing;nw&&nw.addEventListener('statechange',()=>{if(nw.state==='installed'&&navigator.serviceWorker.controller)document.querySelector('#updateBanner').style.display='block'})})});navigator.serviceWorker.addEventListener('controllerchange',()=>location.reload());document.querySelector('#reloadBtn').onclick=()=>{navigator.serviceWorker.getRegistration().then(r=>{if(r&&r.waiting)r.waiting.postMessage({type:'SKIP_WAITING'});else location.reload()})}}
 </script>
 </body>
 </html>
