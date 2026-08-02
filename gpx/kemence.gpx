@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Kirandulas PWA" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata><name>Kemence / Csarna-patak / kisvasút</name></metadata>
+  <wpt lat="48.0158759" lon="18.8883868"><name>Kemence kisvasút</name></wpt>
+  <wpt lat="48.0158759" lon="18.8883868"><name>Csarna-patak / kisvasút</name></wpt>
+  <rte><name>Kemence / Csarna-patak / kisvasút mini pontok</name>
+    <rtept lat="48.0158759" lon="18.8883868"><name>Kemence kisvasút</name></rtept>
+    <rtept lat="48.0158759" lon="18.8883868"><name>Csarna-patak / kisvasút</name></rtept>
+  </rte>
+</gpx>
