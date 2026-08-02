@@ -378,4 +378,4 @@ window.PLACES = [
     "gpxUrl": "gpx/remete.gpx"
   }
 ];
-window.APP_VERSION = "2026-08-02-3";
+window.APP_VERSION = "2026-08-02-4";

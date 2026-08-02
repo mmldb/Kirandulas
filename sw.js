@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kirandulas-v2026-08-02-3';
+const CACHE_NAME = 'kirandulas-v2026-08-02-4';
 const CORE_ASSETS = [
   './',
   './index.html',
