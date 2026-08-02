@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Kirandulas PWA" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata><name>Kismaros / Morgó-patak</name></metadata>
+  <wpt lat="47.8277365" lon="19.0134108"><name>Kismaros vasútállomás</name></wpt>
+  <wpt lat="47.8277365" lon="19.0134108"><name>Morgó-patak Kismarosnál</name></wpt>
+  <rte><name>Kismaros / Morgó-patak mini pontok</name>
+    <rtept lat="47.8277365" lon="19.0134108"><name>Kismaros vasútállomás</name></rtept>
+    <rtept lat="47.8277365" lon="19.0134108"><name>Morgó-patak Kismarosnál</name></rtept>
+  </rte>
+</gpx>
