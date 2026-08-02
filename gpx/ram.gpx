@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Kirandulas PWA" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata><name>Rám-szakadék alsóbb részek / Dömös</name></metadata>
+  <wpt lat="47.7636231" lon="18.9110928"><name>Dömös</name></wpt>
+  <wpt lat="47.7387483" lon="18.8937988"><name>Rám-szakadék</name></wpt>
+  <rte><name>Rám-szakadék alsóbb részek / Dömös mini pontok</name>
+    <rtept lat="47.7636231" lon="18.9110928"><name>Dömös</name></rtept>
+    <rtept lat="47.7387483" lon="18.8937988"><name>Rám-szakadék</name></rtept>
+  </rte>
+</gpx>
